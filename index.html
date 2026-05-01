@@ -175,7 +175,7 @@
             position: relative;
         }
         .suhu-card::before {
-            content: '🔮';
+            content: '';
             position: absolute; top: -15px; left: 20px; font-size: 2rem;
             filter: drop-shadow(0 0 10px rgba(168, 85, 247, 0.5));
             animation: float 3s ease-in-out infinite;
@@ -338,7 +338,7 @@
                 <div class="flex items-center gap-4 text-center md:text-left flex-col md:flex-row">
                     <span class="text-white/40">© 2026 VERSE INTERFACE</span>
                     <span class="hidden md:inline text-orange-900/40 opacity-20">|</span>
-                    <span>Dibuat Pake ❤️ Buat Gen Z</span>
+                    <span>Dibuat Pake  Buat Gen Z</span>
                 </div>
             </div>
         </footer>
@@ -462,7 +462,7 @@
             <div class="glass-card p-10 md:p-16 rounded-[3rem] text-center mb-12 relative overflow-hidden shadow-[0_0_40px_rgba(168,85,247,0.1)]">
                 <div class="absolute -top-20 -right-20 w-64 h-64 bg-orange-500/20 blur-[80px]"></div>
                 
-                <h2 class="text-[10px] font-bold text-orange-400 uppercase tracking-[0.4em] mb-4">✨ VERSE COSMIC RESULT</h2>
+                <h2 class="text-[10px] font-bold text-orange-400 uppercase tracking-[0.4em] mb-4"> VERSE COSMIC RESULT</h2>
                 <h1 id="res-name" class="font-outfit text-5xl md:text-7xl font-black text-white mb-2 uppercase">User</h1>
                 <p id="res-aura" class="text-white/60 mb-10 uppercase tracking-widest text-xs font-bold font-mono leading-relaxed">Loading Data...</p>
                 
@@ -689,7 +689,7 @@
                 if (isPremium) {
                     ramalan += `\n\nTahun ini, alam semesta lagi buka banyak pintu peluang buat lo, terutama dari circle sosial yang ga lo duga. Pesan Suhu: Percaya sama insting pertama lo pas ngambil keputusan krusial, radar kosmik lo lagi tajam-tajamnya!`;
                 } else {
-                    ramalan += ` (Upgrade ke Premium untuk baca terawangan hoki & mistis lebih dalam dari Suhu 🔮).`;
+                    ramalan += ` (Upgrade ke Premium untuk baca terawangan hoki & mistis lebih dalam dari Suhu ).`;
                 }
 
                 return ramalan;
@@ -819,7 +819,7 @@
             
             if(planType === 'premium') {
                 badge.className = "inline-flex mb-6 px-3 py-1 rounded-md text-[10px] uppercase tracking-widest font-bold bg-gradient-to-r from-orange-500 to-purple-500 text-white";
-                badge.innerText = "⭐ PAKET PREMIUM (48 SOAL + DEEP DATA)";
+                badge.innerText = " PAKET PREMIUM (48 SOAL + DEEP DATA)";
                 desc.innerText = "Sistem premium butuh data spesifik lo buat ngebuka kunci perhitungan Genetika Karir.";
                 premiumFields.classList.remove('hidden');
             } else {
@@ -968,7 +968,7 @@
                 sklContainer.classList.add('premium-locked');
                 sklContainer.innerHTML += lockOverlay;
 
-                document.getElementById('btn-download').innerText = "🔒 Download PDF (Premium Only)";
+                document.getElementById('btn-download').innerText = " Download PDF (Premium Only)";
                 document.getElementById('btn-download').style.opacity = '0.5';
                 document.getElementById('btn-download').onclick = promptPremiumUpgrade;
                 document.getElementById('txt-download-info').innerText = "Halaman ini hanya merangkum sebagian kecil dari profil aslimu.";
@@ -1020,7 +1020,7 @@
             const kode = prompt(confirmMsg);
             
             if (kode && kode.toUpperCase() === 'LUNAS') {
-                alert("✅ Kode Valid! Selamat datang di Era Baru. Membuka fitur Premium...");
+                alert(" Kode Valid! Selamat datang di Era Baru. Membuka fitur Premium...");
                 
                 // Ubah status jadi premium
                 AppState.plan = 'premium';
@@ -1043,7 +1043,7 @@
                 renderQuestion(8); 
                 
             } else if (kode) {
-                alert("❌ Kode salah bro/sis. Cek lagi atau chat admin ya!");
+                alert(" Kode salah bro/sis. Cek lagi atau chat admin ya!");
             }
         }
     </script>
