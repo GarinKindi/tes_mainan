@@ -1,0 +1,1051 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VERSE — Bongkar Pola Pikir Lo, Temukan Karir Lo</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Outfit:wght@300;500;800;900&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <style>
+        :root {
+            --warm-orange: #ff8c42;
+            --warm-gold: #ffcc33;
+            --warm-rose: #e85d75;
+            --warm-purple: #a855f7;
+            --earth-dark: #0f0d0c;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--earth-dark);
+            color: #f4f1ee;
+            overflow-x: hidden;
+        }
+
+        .font-outfit { font-family: 'Outfit', sans-serif; }
+
+        /* Neural Background */
+        .neural-bg {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: radial-gradient(circle at 50% 50%, rgba(255, 140, 66, 0.08), transparent);
+            z-index: -1;
+        }
+
+        .node-flow {
+            position: absolute;
+            background: linear-gradient(to bottom, var(--warm-gold), transparent);
+            width: 1px;
+            height: 100px;
+            opacity: 0.15;
+            animation: nodeMove 10s linear infinite;
+        }
+
+        @keyframes nodeMove {
+            0% { transform: translateY(-100vh); opacity: 0; }
+            50% { opacity: 0.4; }
+            100% { transform: translateY(100vh); opacity: 0; }
+        }
+
+        /* Chameleon Text Effect */
+        .text-bunglon {
+            background: linear-gradient(
+                to right, 
+                #fff, 
+                var(--warm-orange), 
+                var(--warm-gold), 
+                var(--warm-rose), 
+                var(--warm-purple),
+                var(--warm-orange)
+            );
+            background-size: 300% auto;
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: chameleon 6s linear infinite;
+            filter: drop-shadow(0 0 8px rgba(255, 140, 66, 0.3));
+            display: inline-block;
+        }
+
+        @keyframes chameleon {
+            0% { background-position: 0% center; }
+            100% { background-position: 300% center; }
+        }
+
+        .glass-card {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(15px);
+            border: 1px solid rgba(255, 140, 66, 0.1);
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .premium-border {
+            border: 1px solid transparent;
+            background: linear-gradient(var(--earth-dark), var(--earth-dark)) padding-box,
+                        linear-gradient(135deg, var(--warm-orange), var(--warm-purple)) border-box;
+        }
+
+        .hero-glow::after {
+            content: '';
+            position: absolute;
+            top: 50%; left: 50%;
+            width: 120%; height: 120%;
+            background: radial-gradient(circle, rgba(255, 140, 66, 0.15) 0%, transparent 70%);
+            transform: translate(-50%, -50%);
+            z-index: -1;
+            filter: blur(50px);
+        }
+
+        .btn-organic {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 140, 66, 0.2);
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+        }
+
+        .btn-organic:hover {
+            background: var(--warm-orange);
+            color: var(--earth-dark);
+            transform: scale(1.05);
+            box-shadow: 0 0 25px rgba(255, 140, 66, 0.5);
+        }
+
+        /* Mobile Menu Animation */
+        #mobile-menu {
+            transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.3s ease;
+            transform: translateY(-100%);
+            opacity: 0;
+            pointer-events: none;
+        }
+        #mobile-menu.active {
+            transform: translateY(0);
+            opacity: 1;
+            pointer-events: all;
+        }
+
+        .hamburger-line { transition: all 0.3s ease; transform-origin: center; }
+        .hamburger.active .line-1 { transform: translateY(6px) rotate(45deg); }
+        .hamburger.active .line-2 { opacity: 0; }
+        .hamburger.active .line-3 { transform: translateY(-6px) rotate(-45deg); }
+
+        .scan-line {
+            width: 100%; height: 2px;
+            background: var(--warm-gold);
+            position: absolute; top: 0; left: 0;
+            box-shadow: 0 0 15px var(--warm-gold);
+            animation: scan 3s linear infinite;
+            z-index: 20; opacity: 0.5;
+        }
+        @keyframes scan { 0% { top: 0%; } 100% { top: 100%; } }
+
+        .progress-fill { transition: width 0.5s ease-in-out; }
+
+        /* Inputs */
+        .form-input {
+            width: 100%; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,140,66,0.2);
+            padding: 1rem; border-radius: 1rem; color: white; outline: none; transition: all 0.3s;
+        }
+        .form-input:focus { border-color: var(--warm-orange); background: rgba(255,255,255,0.1); }
+        select.form-input { appearance: none; background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e"); background-repeat: no-repeat; background-position: right 1rem center; background-size: 1em; }
+        select.form-input option { background-color: var(--earth-dark); color: white; }
+        input[type="time"]::-webkit-calendar-picker-indicator { filter: invert(1); cursor: pointer; }
+        
+        /* Modals & Overlays */
+        #onboarding-modal, #assessment-overlay, #results-view {
+            display: none; background: var(--earth-dark); z-index: 200; position: fixed; inset: 0; overflow-y: auto;
+        }
+        #onboarding-modal.active, #assessment-overlay.active, #results-view.active { display: flex; }
+        #onboarding-modal { background: rgba(15, 13, 12, 0.95); backdrop-filter: blur(10px); align-items: center; justify-content: center; p-6; }
+
+        /* Locked Premium Content */
+        .premium-locked { position: relative; overflow: hidden; pointer-events: none; user-select: none; }
+        .premium-locked > div { filter: blur(6px); opacity: 0.5; }
+        .premium-locked-overlay {
+            position: absolute; inset: 0; z-index: 10; display: flex; flex-direction: column; 
+            align-items: center; justify-content: center; pointer-events: auto;
+            background: rgba(15,13,12,0.6); backdrop-filter: blur(2px);
+        }
+
+        /* Suhu Cosmic Card */
+        .suhu-card {
+            background: linear-gradient(145deg, rgba(168, 85, 247, 0.1) 0%, rgba(255, 140, 66, 0.05) 100%);
+            border: 1px solid rgba(168, 85, 247, 0.3);
+            position: relative;
+        }
+        .suhu-card::before {
+            content: '🔮';
+            position: absolute; top: -15px; left: 20px; font-size: 2rem;
+            filter: drop-shadow(0 0 10px rgba(168, 85, 247, 0.5));
+            animation: float 3s ease-in-out infinite;
+        }
+        @keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-5px); } }
+    </style>
+</head>
+<body class="antialiased overflow-x-hidden">
+
+    <div class="neural-bg" id="neural-container"></div>
+
+    <!-- Navigation -->
+    <nav id="main-nav" class="fixed top-0 w-full z-[100] px-6 md:px-12 py-6 bg-earth-dark/50 backdrop-blur-md border-b border-white/5 transition-transform duration-500">
+        <div class="max-w-7xl mx-auto flex justify-between items-center">
+            <div class="flex items-center gap-3 group cursor-pointer" onclick="window.scrollTo(0,0)">
+                <div class="w-10 h-10 rounded-full border border-orange-500/30 flex items-center justify-center bg-orange-500/5 group-hover:scale-110 transition-transform">
+                    <i data-lucide="sparkles" class="text-orange-400 w-5 h-5"></i>
+                </div>
+                <span class="font-outfit font-bold text-xl tracking-tight text-white uppercase">VERSE<span class="text-orange-400">.</span></span>
+            </div>
+
+            <div class="hidden lg:flex gap-10 text-[11px] uppercase tracking-[0.2em] font-medium text-white/50">
+                <a href="#upgrade" class="hover:text-orange-300 transition-colors">Paket Era</a>
+                <a href="#science" class="hover:text-orange-300 transition-colors">Sains Karir</a>
+            </div>
+
+            <div class="flex items-center gap-6">
+                <button class="hidden md:block text-[10px] font-bold border border-orange-500/20 px-6 py-2.5 rounded-full hover:bg-orange-500/10 transition-all text-orange-200 uppercase tracking-widest" onclick="openOnboarding('premium')">
+                    AKSES_PREMIUM
+                </button>
+                <button id="hamburger" aria-label="Toggle Menu" class="hamburger lg:hidden flex flex-col gap-1.5 p-2 z-[110]">
+                    <span class="hamburger-line line-1 w-6 h-0.5 bg-white rounded-full"></span>
+                    <span class="hamburger-line line-2 w-6 h-0.5 bg-white rounded-full"></span>
+                    <span class="hamburger-line line-3 w-6 h-0.5 bg-white rounded-full"></span>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Mobile Menu Overlay -->
+    <div id="mobile-menu" class="fixed inset-0 bg-earth-dark z-[90] flex flex-col items-center justify-center p-10 lg:hidden">
+        <div class="flex flex-col gap-8 text-center">
+            <a href="#" class="mobile-link text-3xl font-outfit font-extrabold text-white" onclick="openOnboarding('standard')">SCAN POTENSI</a>
+            <a href="#upgrade" class="mobile-link text-3xl font-outfit font-extrabold text-white">UPGRADE</a>
+            <a href="#science" class="mobile-link text-3xl font-outfit font-extrabold text-white">SCIENCE</a>
+            <hr class="border-white/10 w-20 mx-auto">
+            <button onclick="openOnboarding('premium')" class="text-xs font-bold border border-orange-500/40 px-8 py-4 rounded-full bg-orange-500/10 text-orange-200 uppercase tracking-widest">
+                MASUK KE ERA BARU (PREMIUM)
+            </button>
+        </div>
+    </div>
+
+    <!-- MAIN APP WRAPPER (Landing Page) -->
+    <main id="landing-page-content">
+        <!-- Hero Section -->
+        <section class="min-h-screen flex items-center justify-center pt-32 pb-20 px-6">
+            <div class="max-w-7xl mx-auto grid lg:grid-cols-2 gap-16 items-center">
+                <div data-aos="fade-up" class="text-center lg:text-left order-2 lg:order-1">
+                    <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-orange-500/10 border border-orange-500/20 text-[10px] uppercase tracking-[0.2em] text-orange-400 mb-8 mx-auto lg:mx-0">
+                        <span class="w-1.5 h-1.5 rounded-full bg-orange-400 animate-pulse"></span>
+                        Zodiak + Shio + MBTI Engine
+                    </div>
+                    <h1 class="font-outfit text-4xl sm:text-5xl md:text-6xl xl:text-7xl font-extrabold leading-[1.1] mb-8 text-white">
+                        Pola Pikir Lo = <br class="hidden sm:block"> 
+                        <span class="text-bunglon">Masa Depan Karir Lo.</span>
+                    </h1>
+                    <p class="text-base md:text-lg text-white/50 leading-relaxed max-w-xl mb-12 mx-auto lg:mx-0">
+                        Bukan sekadar tes kepribadian biasa. Kita bedah *hidden talent* lo lewat gabungan Sains Karir, Psikologi Warna, Zodiak, dan Ramalan Shio yang dikemas pake AI.
+                    </p>
+                    <div class="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-6">
+                        <button onclick="openOnboarding('standard')" class="btn-organic w-full sm:w-auto px-10 py-5 rounded-full font-bold text-sm text-white uppercase tracking-widest shadow-[0_0_30px_rgba(255,140,66,0.2)]">
+                            Bongkar Karir Gue
+                        </button>
+                        <a href="#science" class="group flex items-center gap-3 text-sm font-semibold text-white/60 hover:text-orange-300 transition-colors">
+                            Gimana Caranya?
+                            <i data-lucide="arrow-right" class="w-4 h-4 group-hover:translate-x-1 transition-transform"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="hero-glow flex justify-center order-1 lg:order-2" data-aos="zoom-in">
+                    <div class="relative w-full max-w-[300px] sm:max-w-md aspect-square glass-card rounded-full overflow-hidden border-orange-500/20 flex items-center justify-center p-8 shadow-[0_0_80px_rgba(255,140,66,0.15)]">
+                        <div class="scan-line"></div>
+                        <div class="absolute inset-0 flex items-center justify-center opacity-10">
+                            <i data-lucide="brain" class="w-full h-full stroke-1 text-orange-300"></i>
+                        </div>
+                        <div class="z-10 text-center pointer-events-none">
+                            <div class="font-outfit font-black text-2xl sm:text-4xl mb-2 text-white uppercase tracking-tighter">COSMIC DATA</div>
+                            <p class="text-[9px] sm:text-[10px] text-orange-300 uppercase tracking-[0.3em] font-mono font-bold bg-orange-500/10 px-4 py-1.5 rounded-full border border-orange-500/20">Neural_Scan_Ready</p>
+                        </div>
+                        <svg viewBox="0 0 200 200" class="absolute inset-0 w-full h-full animate-[spin_30s_linear_infinite]">
+                            <circle cx="100" cy="100" r="95" fill="none" stroke="rgba(255,140,66,0.1)" stroke-width="0.5" stroke-dasharray="4 8" />
+                            <circle cx="100" cy="100" r="85" fill="none" stroke="rgba(255,140,66,0.2)" stroke-width="0.5" stroke-dasharray="20 10" />
+                        </svg>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Pricing Section -->
+        <section id="upgrade" class="py-32 px-6 bg-white/[0.01]">
+            <div class="max-w-7xl mx-auto">
+                <div class="text-center mb-20" data-aos="fade-up">
+                    <h2 class="font-outfit text-4xl md:text-6xl font-black text-white mb-6 tracking-tight">Pilih <span class="text-bunglon">Paket Era</span> Lo.</h2>
+                    <p class="text-white/40 max-w-2xl mx-auto text-lg leading-relaxed">Mau cuma iseng Vibe Check atau beneran mau punya panduan karir profesional? Kita spill bedanya.</p>
+                </div>
+
+                <div class="grid lg:grid-cols-2 gap-8 items-stretch">
+                    <!-- Standard Plan -->
+                    <div class="glass-card p-8 md:p-12 rounded-[3rem] flex flex-col justify-between group hover:border-white/20" data-aos="fade-right">
+                        <div>
+                            <div class="flex justify-between items-start mb-10">
+                                <div>
+                                    <h3 class="text-2xl font-bold text-white mb-2">Standard</h3>
+                                    <p class="text-white/40 text-sm italic">"Pengenalan Diri Level 1"</p>
+                                </div>
+                                <span class="text-2xl font-black text-white/20 uppercase tracking-widest">Gratis</span>
+                            </div>
+                            <ul class="space-y-6 mb-12 text-sm text-white/50">
+                                <li class="flex items-center gap-4"><i data-lucide="check" class="text-orange-400 w-5 h-5 shrink-0"></i> 8 Pertanyaan Inti Khusus</li>
+                                <li class="flex items-center gap-4"><i data-lucide="check" class="text-orange-400 w-5 h-5 shrink-0"></i> Analisis Zodiak + Shio Dasar</li>
+                                <li class="flex items-center gap-4"><i data-lucide="check" class="text-orange-400 w-5 h-5 shrink-0"></i> Ramalan Suhu (Cosmic Message)</li>
+                                <li class="flex items-center gap-4"><i data-lucide="check" class="text-orange-400 w-5 h-5 shrink-0"></i> Rekomendasi 3 Jurusan Kuliah</li>
+                            </ul>
+                        </div>
+                        <button onclick="openOnboarding('standard')" class="w-full py-4 rounded-full border border-white/10 hover:bg-white/10 transition-all font-bold text-xs tracking-widest uppercase">MULAI GRATIS</button>
+                    </div>
+
+                    <!-- Premium Plan -->
+                    <div class="glass-card premium-border p-8 md:p-12 rounded-[3rem] flex flex-col justify-between relative overflow-hidden group shadow-[0_0_50px_rgba(168,85,247,0.1)]" data-aos="fade-left">
+                        <div class="absolute -top-20 -right-20 w-64 h-64 bg-orange-500/20 blur-[80px]"></div>
+                        <div>
+                            <div class="flex justify-between items-start mb-10">
+                                <div>
+                                    <h3 class="text-2xl font-bold text-white mb-2">Premium</h3>
+                                    <p class="text-orange-300 text-sm italic">"Analisis Mendalam + Data Spesifik"</p>
+                                </div>
+                                <div class="text-right">
+                                    <span class="text-[10px] text-white/40 block mb-1 uppercase tracking-widest font-bold">Investasi</span>
+                                    <span class="text-3xl font-black text-orange-400 uppercase tracking-tight">Rp 15k</span>
+                                </div>
+                            </div>
+                            <ul class="space-y-6 mb-12 text-sm text-white/80">
+                                <li class="flex items-center gap-4"><i data-lucide="zap" class="text-yellow-400 w-5 h-5 fill-yellow-400 shrink-0"></i> 48 Pertanyaan Mendalam</li>
+                                <li class="flex items-center gap-4"><i data-lucide="zap" class="text-yellow-400 w-5 h-5 fill-yellow-400 shrink-0"></i> Fusion Engine (MBTI + Zodiak + Shio + Warna + Gol. Darah)</li>
+                                <li class="flex items-center gap-4"><i data-lucide="zap" class="text-yellow-400 w-5 h-5 fill-yellow-400 shrink-0"></i> Buka Kunci: Daftar Profesi & Proyeksi Gaji</li>
+                                <li class="flex items-center gap-4"><i data-lucide="zap" class="text-yellow-400 w-5 h-5 fill-yellow-400 shrink-0"></i> Buka Kunci: Distribusi Potensi Skala RIASEC</li>
+                                <li class="flex items-center gap-4 text-orange-200"><i data-lucide="award" class="w-5 h-5 shrink-0"></i> Tombol Download PDF Aktif</li>
+                            </ul>
+                        </div>
+                        <button onclick="openOnboarding('premium')" class="w-full py-5 rounded-full bg-gradient-to-r from-orange-500 to-rose-600 hover:shadow-[0_0_40px_rgba(255,140,66,0.4)] hover:scale-[1.02] transition-all font-black text-sm tracking-widest text-white uppercase">UPGRADE SEKARANG</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="py-16 px-8 border-t border-white/5 text-[10px] uppercase tracking-[0.2em] text-white/20 font-bold">
+            <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-10">
+                <div class="flex items-center gap-4 text-center md:text-left flex-col md:flex-row">
+                    <span class="text-white/40">© 2026 VERSE INTERFACE</span>
+                    <span class="hidden md:inline text-orange-900/40 opacity-20">|</span>
+                    <span>Dibuat Pake ❤️ Buat Gen Z</span>
+                </div>
+            </div>
+        </footer>
+    </main>
+
+    <!-- ========================================================================= -->
+    <!-- 0. ONBOARDING MODAL (Nama, DOB, Warna Aura, Gol Darah) -->
+    <!-- ========================================================================= -->
+    <div id="onboarding-modal" class="flex-col items-center justify-center p-6">
+        <div class="glass-card max-w-md w-full p-8 md:p-12 rounded-[2rem] relative overflow-hidden max-h-[90vh] overflow-y-auto">
+            <button onclick="closeOnboarding()" class="absolute top-6 right-6 text-white/30 hover:text-white transition-colors z-20"><i data-lucide="x"></i></button>
+            
+            <div id="plan-badge" class="inline-flex mb-6 px-3 py-1 rounded-md text-[10px] uppercase tracking-widest font-bold"></div>
+            
+            <h2 class="font-outfit text-3xl font-black text-white mb-2">Setup Profil</h2>
+            <p id="onboarding-desc" class="text-white/50 text-sm mb-8">AI kita butuh data dasar buat mulai sinkronisasi cosmic engine.</p>
+
+            <div class="space-y-5">
+                <div>
+                    <label class="block text-[11px] uppercase tracking-widest text-white/60 mb-2 font-bold">Nama Panggilan</label>
+                    <input type="text" id="inp-name" class="form-input" placeholder="Gimana gue manggil lo?" autocomplete="off">
+                </div>
+                <div>
+                    <label class="block text-[11px] uppercase tracking-widest text-white/60 mb-2 font-bold">Tanggal & Tahun Lahir</label>
+                    <input type="date" id="inp-dob" class="form-input text-white/80">
+                    <p class="text-[9px] text-orange-400 mt-1">*Penting untuk kalkulasi Zodiak & Shio</p>
+                </div>
+                <div>
+                    <label class="block text-[11px] uppercase tracking-widest text-white/60 mb-2 font-bold">Warna Kesukaan (Aura)</label>
+                    <select id="inp-color" class="form-input">
+                        <option value="Merah">Merah (Berani, Enerjik)</option>
+                        <option value="Biru">Biru (Tenang, Logis)</option>
+                        <option value="Hijau">Hijau (Harmoni, Santai)</option>
+                        <option value="Kuning">Kuning (Ceria, Ekstrovert)</option>
+                        <option value="Ungu">Ungu (Misterius, Ambisius)</option>
+                        <option value="Hitam">Hitam (Eksklusif, Fokus)</option>
+                        <option value="Putih">Putih (Perfeksionis, Bersih)</option>
+                    </select>
+                </div>
+
+                <!-- SPECIFIC PREMIUM FIELDS -->
+                <div id="premium-fields" class="hidden space-y-5 mt-5 pt-5 border-t border-white/10">
+                    <p class="text-[10px] text-orange-400 font-bold uppercase tracking-widest flex items-center gap-2">
+                        <i data-lucide="database" class="w-3 h-3"></i> Premium Data Layer
+                    </p>
+                    <div class="grid grid-cols-1 gap-4">
+                        <div>
+                            <label class="block text-[11px] uppercase tracking-widest text-white/60 mb-2 font-bold">Gol. Darah</label>
+                            <select id="inp-blood" class="form-input text-white/80">
+                                <option value="A">Tipe A</option>
+                                <option value="B">Tipe B</option>
+                                <option value="AB">Tipe AB</option>
+                                <option value="O">Tipe O</option>
+                            </select>
+                        </div>
+                    </div>
+                    <p class="text-[9px] text-white/40 leading-tight">Genetika golongan darah mengungkap profil biologis-perilaku lo buat ningkatin akurasi engine.</p>
+                </div>
+
+                <div id="onboard-error" class="text-rose-400 text-xs hidden font-medium bg-rose-500/10 p-3 rounded-lg border border-rose-500/20">Harap isi semua kolom wajib Bro/Sis!</div>
+                
+                <button onclick="startAssessment()" class="w-full mt-4 btn-organic py-4 rounded-xl font-bold uppercase tracking-widest text-sm shadow-lg flex justify-center items-center gap-2">
+                    <i data-lucide="zap" class="w-4 h-4"></i> Inisiasi Sistem
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- ========================================================================= -->
+    <!-- 1. ASSESSMENT OVERLAY (KUIS) -->
+    <!-- ========================================================================= -->
+    <div id="assessment-overlay" class="flex-col items-center justify-start p-6 md:p-20 overflow-y-auto">
+        <div class="max-w-3xl w-full mt-10">
+            <!-- Header Progress -->
+            <div class="flex justify-between items-center mb-12">
+                <div class="flex-1">
+                    <div class="h-1.5 w-full bg-white/10 rounded-full overflow-hidden">
+                        <div id="progress-bar-fill" class="progress-fill h-full bg-gradient-to-r from-orange-500 to-purple-500" style="width: 0%"></div>
+                    </div>
+                </div>
+                <span id="progress-text" class="ml-6 text-[10px] font-bold text-orange-400 uppercase tracking-widest font-mono shrink-0">Step 0/0</span>
+            </div>
+
+            <!-- AI Engine Area -->
+            <div id="assessment-engine-container" class="min-h-[400px] flex flex-col justify-center">
+                <!-- Question Card -->
+                <div id="question-card" class="glass-card p-8 md:p-12 rounded-[2rem] text-center shadow-[0_0_30px_rgba(255,140,66,0.05)]">
+                    <p class="text-xs text-orange-400 font-bold uppercase tracking-widest mb-4 flex items-center justify-center gap-2">
+                        <i data-lucide="scan" class="w-4 h-4"></i> Modul Analisa <span id="q-module"></span>
+                    </p>
+                    <h3 id="current-question-text" class="font-outfit text-2xl md:text-3xl font-bold mb-10 text-white leading-relaxed">Loading...</h3>
+                    <div id="options-grid" class="grid gap-3 text-left">
+                        <!-- Options Rendered Here via JS -->
+                    </div>
+                </div>
+
+                <!-- AI Processing View (Loading) -->
+                <div id="ai-processing-view" class="hidden flex flex-col items-center justify-center text-center py-20">
+                    <div class="relative w-24 h-24 mb-8">
+                        <div class="absolute inset-0 border-4 border-orange-500/20 rounded-full"></div>
+                        <div class="absolute inset-0 border-4 border-orange-500 border-t-transparent rounded-full animate-spin"></div>
+                        <i data-lucide="cpu" class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-orange-400 w-8 h-8"></i>
+                    </div>
+                    <h4 class="text-2xl font-outfit font-black mb-4 animate-pulse">Deep Fusion Engine Berjalan...</h4>
+                    <p id="loading-desc" class="text-white/40 text-sm max-w-xs mx-auto">Mengkalkulasi irisan pola MBTI, zodiak, dan takdir Shio lo.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ========================================================================= -->
+    <!-- 2. RESULTS VIEW (HALAMAN HASIL) -->
+    <!-- ========================================================================= -->
+    <div id="results-view" class="flex-col items-center p-6 pt-12 pb-20">
+        <div class="max-w-4xl w-full">
+            <button onclick="location.reload()" class="mb-8 flex items-center gap-2 text-xs font-bold text-white/40 hover:text-orange-400 transition-colors uppercase tracking-widest">
+                <i data-lucide="chevron-left" class="w-4 h-4"></i> Tutup & Kembali
+            </button>
+
+            <!-- 1. HERO RESULT -->
+            <div class="glass-card p-10 md:p-16 rounded-[3rem] text-center mb-12 relative overflow-hidden shadow-[0_0_40px_rgba(168,85,247,0.1)]">
+                <div class="absolute -top-20 -right-20 w-64 h-64 bg-orange-500/20 blur-[80px]"></div>
+                
+                <h2 class="text-[10px] font-bold text-orange-400 uppercase tracking-[0.4em] mb-4">✨ VERSE COSMIC RESULT</h2>
+                <h1 id="res-name" class="font-outfit text-5xl md:text-7xl font-black text-white mb-2 uppercase">User</h1>
+                <p id="res-aura" class="text-white/60 mb-10 uppercase tracking-widest text-xs font-bold font-mono leading-relaxed">Loading Data...</p>
+                
+                <div class="inline-block p-6 rounded-3xl bg-white/5 border border-white/10 backdrop-blur-md">
+                    <div id="res-vibe" class="text-3xl md:text-5xl font-black text-bunglon uppercase tracking-tighter">
+                        VIBE CHECK
+                    </div>
+                </div>
+            </div>
+
+            <!-- NEW: RAMALAN SUHU (COSMIC MESSAGE) -->
+            <div class="mb-12" data-aos="fade-up">
+                <div class="glass-card suhu-card p-8 md:p-10 rounded-[2rem] relative overflow-hidden">
+                    <div class="absolute inset-0 opacity-10 bg-[url('https://www.transparenttextures.com/patterns/stardust.png')] pointer-events-none"></div>
+                    <h3 class="text-xl font-bold text-white mb-4 flex items-center gap-3">
+                        Pesan Semesta (Ramalan Suhu)
+                    </h3>
+                    <p id="res-ramalan" class="text-white/80 leading-relaxed font-medium text-lg italic">
+                        "Sedang menerawang nasib..."
+                    </p>
+                </div>
+            </div>
+
+            <!-- 2. DEEP INSIGHT -->
+            <div class="mb-12" data-aos="fade-up">
+                <h3 class="text-xl font-bold text-white mb-6 flex items-center gap-3">
+                    <i data-lucide="brain" class="text-orange-400 w-6 h-6"></i>
+                    Insight Psikologi Lo
+                </h3>
+                <div class="glass-card p-8 rounded-2xl border-orange-500/20 relative">
+                    <i data-lucide="quote" class="absolute top-6 left-6 w-12 h-12 text-white/5"></i>
+                    <p id="res-insight" class="text-lg text-white/80 leading-relaxed relative z-10 font-medium">...</p>
+                </div>
+            </div>
+
+            <!-- 3. TOP 3 JURUSAN -->
+            <div class="mb-12" data-aos="fade-up">
+                <h3 class="text-xl font-bold text-white mb-6 flex items-center gap-3">
+                    <i data-lucide="graduation-cap" class="text-orange-400 w-6 h-6"></i>
+                    Top 3 Jurusan
+                </h3>
+                <div class="grid md:grid-cols-3 gap-4" id="major-grid"></div>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-8 mb-16">
+                <!-- 4. TOP KARIR (DILOCK JIKA STANDAR) -->
+                <div id="career-container" class="glass-card p-8 rounded-[2.5rem]" data-aos="fade-up">
+                    <h3 class="font-bold text-white mb-6 flex items-center gap-3">
+                        <i data-lucide="briefcase" class="text-orange-400 w-5 h-5"></i>
+                        Proyeksi Karir & Gaji
+                    </h3>
+                    <div class="space-y-4" id="career-list">
+                        <!-- JS renders here -->
+                    </div>
+                </div>
+
+                <!-- 5. SKILL PROGRESS BAR (DILOCK JIKA STANDAR) -->
+                <div id="skill-container" class="glass-card p-8 rounded-[2.5rem]" data-aos="fade-up">
+                    <h3 class="font-bold text-white mb-6 flex items-center gap-3">
+                        <i data-lucide="activity" class="text-orange-400 w-5 h-5"></i>
+                        Distribusi Potensi (RIASEC)
+                    </h3>
+                    <div class="space-y-5" id="skill-bars">
+                        <!-- JS renders here -->
+                    </div>
+                </div>
+            </div>
+
+            <!-- 6. CTA BOTTOM -->
+            <div class="text-center mt-10 mb-10" data-aos="zoom-in">
+                <button id="btn-download" class="btn-organic px-10 py-5 rounded-full font-bold uppercase tracking-widest text-sm text-white shadow-[0_0_30px_rgba(255,140,66,0.2)] hover:scale-105 transition-all">
+                    📄 Download PDF Premium
+                </button>
+                <p id="txt-download-info" class="text-xs text-white/40 mt-4 max-w-sm mx-auto"></p>
+            </div>
+        </div>
+    </div>
+
+    <!-- ========================================================================= -->
+    <!-- LOGIKA & STATE MANAGEMENT (THE ENTERPRISE ENGINE) -->
+    <!-- ========================================================================= -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        /**
+         * 1. DATABASE PERTANYAAN (SSOT)
+         */
+        const fullQuestionsDB = [
+            // --- DIMENSI E / I (Energy & Social) ---
+            { id: 1, text: "Pas libur panjang, energi lo bakal ke-charge maksimal kalau...", module: "E_I", options: [{ text: "Hangout bareng sirkel atau ikut event seru", value: "E" }, { text: "Me-time di kamar, rebahan sambil nge-game/nonton", value: "I" }] },
+            { id: 2, text: "Di tongkrongan atau lingkungan baru, lo biasanya...", module: "E_I", options: [{ text: "Inisiatif buka obrolan dan nyari kenalan duluan", value: "E" }, { text: "Nunggu diajak ngobrol duluan", value: "I" }] },
+            { id: 3, text: "Kalo disuruh mikirin ide buat project, lo lebih suka...", module: "E_I", options: [{ text: "Brainstorming ngobrol rame-rame", value: "E" }, { text: "Mikir sendiri dulu sampe mateng, baru di-share", value: "I" }] },
+            { id: 4, text: "Pas lagi banyak pikiran atau stres, cara lo ngatasinnya...", module: "E_I", options: [{ text: "Curhat ke temen biar lega", value: "E" }, { text: "Proses sendiri dalem hati", value: "I" }] },
+            { id: 5, text: "Di grup chat WhatsApp / tongkrongan, lo lebih sering...", module: "E_I", options: [{ text: "Nimbrung, bales cepet, dan ngeramein", value: "E" }, { text: "Jadi silent reader, males ngetik panjang", value: "I" }] },
+            { id: 6, text: "Kalo ngerjain tugas di kafe, lo milih meja yang...", module: "E_I", options: [{ text: "Di tengah biar kerasa vibenya", value: "E" }, { text: "Di pojok sepi biar ga keganggu", value: "I" }] },
+            { id: 7, text: "Habis seharian full meeting atau kelas, lo merasa...", module: "E_I", options: [{ text: "Masih on fire pengen nongkrong", value: "E" }, { text: "Capek banget sumpah pengen rebahan", value: "I" }] },
+            { id: 8, text: "Gaya komunikasi lo biasanya...", module: "E_I", options: [{ text: "Blak-blakan ngomong langsung", value: "E" }, { text: "Mikir panjang dulu sebelum ngomong", value: "I" }] },
+            { id: 9, text: "Kalo disuruh milih kerjaan idaman, lo prefer...", module: "E_I", options: [{ text: "Kerja lapangan, ketemu banyak orang / klien", value: "E" }, { text: "Fokus kerjaan di depan laptop aja di ruangan", value: "I" }] },
+            { id: 10, text: "Pujian yang paling bikin lo seneng...", module: "E_I", options: [{ text: "\"Lo seru banget asik diajak temenan\"", value: "E" }, { text: "\"Pemikiran lo dalem dan tenang banget\"", value: "I" }] },
+            { id: 11, text: "Pas denger ada acara ngumpul dadakan, respon lo...", module: "E_I", options: [{ text: "Gas langsung berangkat!", value: "E" }, { text: "Haduh, mendadak amat, males ah", value: "I" }] },
+            { id: 12, text: "Kalo lagi fokus terus ada yang ngajak ngobrol...", module: "E_I", options: [{ text: "Gampang ke-distract dan asik ngobrol", value: "E" }, { text: "Ngerasa keganggu dan pengen obrolannya cepet udahan", value: "I" }] },
+
+            // --- DIMENSI S / N (Information Processing) ---
+            { id: 13, text: "Pas baca instruksi barang baru, lo biasanya...", module: "S_N", options: [{ text: "Baca step-by-step detail sesuai urutan", value: "S" }, { text: "Liat sekilas doang, sisanya utak-atik pake insting", value: "N" }] },
+            { id: 14, text: "Lo lebih gampang nginget memori berdasarkan...", module: "S_N", options: [{ text: "Fakta, data, dan detail spesifik", value: "S" }, { text: "Konsep, makna, dan gambaran besarnya aja", value: "N" }] },
+            { id: 15, text: "Kalo disuruh ngekhayal masa depan, otak lo otomatis...", module: "S_N", options: [{ text: "Bikin target yang realistis dan masuk akal", value: "S" }, { text: "Ngebayangin skenario liar yang out of the box", value: "N" }] },
+            { id: 16, text: "Kalo temen lo curhat pake analogi yang muter-muter, lo...", module: "S_N", options: [{ text: "Minta dia to the point aja ngomongin faktanya", value: "S" }, { text: "Nyambung dan ikutan pake analogi lain", value: "N" }] },
+            { id: 17, text: "Pas ngerjain tugas, lo lebih suka...", module: "S_N", options: [{ text: "Pake template atau cara yang udah terbukti jalan", value: "S" }, { text: "Eksperimen nyari cara baru yang lebih asik", value: "N" }] },
+            { id: 18, text: "Kalo disuruh deskripsiin sesuatu, lo fokus ke...", module: "S_N", options: [{ text: "Apa yang keliatan nyata di depan mata", value: "S" }, { text: "Makna tersirat di balik hal tersebut", value: "N" }] },
+            { id: 19, text: "Obrolan yang paling bikin lo bosen...", module: "S_N", options: [{ text: "Teori konspirasi atau filosofi abstrak ga jelas", value: "S" }, { text: "Gosip receh atau detail kehidupan sehari-hari orang", value: "N" }] },
+            { id: 20, text: "Pujian buat gaya kerja lo yang lo suka...", module: "S_N", options: [{ text: "\"Teliti banget dan minim typo\"", value: "S" }, { text: "\"Idenya visioner dan kreatif banget\"", value: "N" }] },
+            { id: 21, text: "Pas jalan-jalan ke tempat baru, otak lo...", module: "S_N", options: [{ text: "Fokus nikmatin pemandangan fisik dan vibesnya", value: "S" }, { text: "Ngebayangin sejarah atau cerita tersembunyi tempat itu", value: "N" }] },
+            { id: 22, text: "Lo lebih percaya sama...", module: "S_N", options: [{ text: "Pengalaman masa lalu dan pengalaman nyata", value: "S" }, { text: "Firasat, intuisi, dan kemungkinan ke depan", value: "N" }] },
+            { id: 23, text: "Cara lo ngeliat suatu masalah...", module: "S_N", options: [{ text: "Fokus ke rincian masalah yang ada sekarang", value: "S" }, { text: "Fokus ke akar masalah dan dampaknya ntar gimana", value: "N" }] },
+            { id: 24, text: "Dalam belajar hal baru, lo butuh...", module: "S_N", options: [{ text: "Contoh praktis biar langsung paham", value: "S" }, { text: "Ngerti teorinya dulu baru dipraktekin", value: "N" }] },
+
+            // --- DIMENSI T / F (Decision Making) ---
+            { id: 25, text: "Kalo temen curhat sambil nangis, lo refleks...", module: "T_F", options: [{ text: "Ngasih solusi rasional biar masalahnya cepet kelar", value: "T" }, { text: "Validasi perasaannya dan dengerin aja dulu", value: "F" }] },
+            { id: 26, text: "Pas ngambil keputusan berat, lo paling takut...", module: "T_F", options: [{ text: "Keputusannya ga logis dan bikin rugi", value: "T" }, { text: "Keputusannya egois dan bikin orang lain sakit hati", value: "F" }] },
+            { id: 27, text: "Kalo ada konflik panas di grup, lo cenderung...", module: "T_F", options: [{ text: "Debat argumen buat nyari siapa yang objektif salah", value: "T" }, { text: "Nengahin biar suasana cepat adem lagi", value: "F" }] },
+            { id: 28, text: "Lo ngerasa sebuah argumen itu bagus kalau...", module: "T_F", options: [{ text: "Datanya valid, objektif, dan masuk akal", value: "T" }, { text: "Disampein dengan empati, sopan, dan beretika", value: "F" }] },
+            { id: 29, text: "Pas harus ngritik kerjaan temen, lo...", module: "T_F", options: [{ text: "Langsung to the point, yang penting bener", value: "T" }, { text: "Milih kata-kata pelan biar dia ga baper", value: "F" }] },
+            { id: 30, text: "Sifat yang paling lo hargai dari orang lain...", module: "T_F", options: [{ text: "Rasional, pinter, dan kompeten", value: "T" }, { text: "Baik hati, care, dan tulus", value: "F" }] },
+            { id: 31, text: "Kalo lo lagi marah, biasanya karena...", module: "T_F", options: [{ text: "Orang ga pake logika atau ngerjain sesuatu ga efisien", value: "T" }, { text: "Orang egois dan gak mikirin perasaan orang lain", value: "F" }] },
+            { id: 32, text: "Pas nonton drakor/film sedih, respon lo...", module: "T_F", options: [{ text: "Biasa aja, malah nyari plot-hole nya", value: "T" }, { text: "Gampang kebawa suasana sampe ikut mewek", value: "F" }] },
+            { id: 33, text: "Di dunia kerja, lo lebih milih bos yang...", module: "T_F", options: [{ text: "Kompeten, pinter, adil walau agak kaku", value: "T" }, { text: "Suportif, pengertian, walau skillnya standar", value: "F" }] },
+            { id: 34, text: "Kalo lo terpaksa harus kick orang dari kelompok...", module: "T_F", options: [{ text: "Gampang, gue sampein alasannya pake bukti data dia males", value: "T" }, { text: "Berat banget rasanya, ngerasa ga enak mikirin nasibnya", value: "F" }] },
+            { id: 35, text: "Prinsip hidup lo lebih ke...", module: "T_F", options: [{ text: "\"Kebenaran di atas segalanya\"", value: "T" }, { text: "\"Harmoni di atas segalanya\"", value: "F" }] },
+            { id: 36, text: "Hal yang paling bikin lo bangga sama diri sendiri...", module: "T_F", options: [{ text: "Sukses nyelesain masalah rumit pake akal lo", value: "T" }, { text: "Sukses ngebantu orang ngelewatin masa susahnya", value: "F" }] },
+
+            // --- DIMENSI J / P (Lifestyle & Structure) ---
+            { id: 37, text: "Soal jadwal liburan, gaya lo biasanya...", module: "J_P", options: [{ text: "Udah ada itinerary rapi dari bulan lalu", value: "J" }, { text: "Go with the flow, liat mood pas hari H", value: "P" }] },
+            { id: 38, text: "Meja kerja / desktop laptop lo wujudnya...", module: "J_P", options: [{ text: "Rapi, terorganisir, folder tertata jelas", value: "J" }, { text: "Berantakan, tapi ajaibnya lo tau letak barang lo", value: "P" }] },
+            { id: 39, text: "Pas ngerjain tugas deadline minggu depan...", module: "J_P", options: [{ text: "Cicil dari sekarang biar tenang hidup gue", value: "J" }, { text: "Sistem Kebut Semalam (SKS) itu jalan ninjaku!", value: "P" }] },
+            { id: 40, text: "Kalo ada rencana ngumpul tapi mendadak batal...", module: "J_P", options: [{ text: "Ngerasa bete dan stress karena jadwal gue berantakan", value: "J" }, { text: "Santai aja, asik malah bisa rebahan di rumah", value: "P" }] },
+            { id: 41, text: "Dalam hal mutusin sesuatu, lo...", module: "J_P", options: [{ text: "Pengen cepet-cepet diketuk palu biar dapet kepastian", value: "J" }, { text: "Nunda mutusin buat nunggu opsi lain siapa tau lebih bagus", value: "P" }] },
+            { id: 42, text: "Lo lebih ngerasa produktif kalau...", module: "J_P", options: [{ text: "Semua to-do list hari ini dicentang tuntas", value: "J" }, { text: "Dapet inspirasi dadakan buat ngerjain hal baru", value: "P" }] },
+            { id: 43, text: "Kalo disuruh packing buat ke luar kota...", module: "J_P", options: [{ text: "Udah disiapin detail lengkap H-3 sebelum berangkat", value: "J" }, { text: "Packing heboh jurus bayangan 2 jam sebelum berangkat", value: "P" }] },
+            { id: 44, text: "Gaya lo ngatur duit / keuangan...", module: "J_P", options: [{ text: "Dicatat detail pengeluarannya per kategori", value: "J" }, { text: "Liat saldo ATM doang, kalo masih ada ya jajan", value: "P" }] },
+            { id: 45, text: "Pas ngerjain project gede, lo...", module: "J_P", options: [{ text: "Fokus selesain satu per satu berurutan sampe kelar", value: "J" }, { text: "Ngerjain lompat-lompat beberapa hal sekaligus biar ga bosen", value: "P" }] },
+            { id: 46, text: "Hal yang paling bikin lo ngerasa aman...", module: "J_P", options: [{ text: "Punya rutinitas, kepastian, dan plan B", value: "J" }, { text: "Punya kebebasan, fleksibilitas, dan tanpa tekanan", value: "P" }] },
+            { id: 47, text: "Ngeliat aturan dan SOP (Standar Operasional)...", module: "J_P", options: [{ text: "Ngebantu banget biar kerjaan teratur dan jelas", value: "J" }, { text: "Kaku banget, ngerasa mengekang kreativitas gue", value: "P" }] },
+            { id: 48, text: "Kalo ngerjain sesuatu pake cara lo sendiri...", module: "J_P", options: [{ text: "Tetep ngikutin urutan dari awal sampe akhir", value: "J" }, { text: "Lompat-lompat ngerjain bagian yang gue suka duluan", value: "P" }] }
+        ];
+
+        /**
+         * 2. STATE MANAGEMENT (PROXY)
+         */
+        const AppState = {
+            plan: 'standard', // 'standard' | 'premium'
+            user: { name: '', dob: '', color: '', blood: '' },
+            questions: [],
+            answers: [],
+            currentStep: 0,
+            result: null
+        };
+
+        /**
+         * 3. BACKEND ENGINES (MENGHITUNG HASIL) Termasuk Cosmic & Shio
+         */
+        const BackendEngine = {
+            getZodiac(dateStr) {
+                const date = new Date(dateStr);
+                const d = date.getDate(), m = date.getMonth() + 1;
+                if((m==1&&d>=20)||(m==2&&d<=18)) return { sign: "Aquarius ♒", el: "Udara" };
+                if((m==2&&d>=19)||(m==3&&d<=20)) return { sign: "Pisces ♓", el: "Air" };
+                if((m==3&&d>=21)||(m==4&&d<=19)) return { sign: "Aries ♈", el: "Api" };
+                if((m==4&&d>=20)||(m==5&&d<=20)) return { sign: "Taurus ♉", el: "Tanah" };
+                if((m==5&&d>=21)||(m==6&&d<=20)) return { sign: "Gemini ♊", el: "Udara" };
+                if((m==6&&d>=21)||(m==7&&d<=22)) return { sign: "Cancer ♋", el: "Air" };
+                if((m==7&&d>=23)||(m==8&&d<=22)) return { sign: "Leo ♌", el: "Api" };
+                if((m==8&&d>=23)||(m==9&&d<=22)) return { sign: "Virgo ♍", el: "Tanah" };
+                if((m==9&&d>=23)||(m==10&&d<=22)) return { sign: "Libra ♎", el: "Udara" };
+                if((m==10&&d>=23)||(m==11&&d<=21)) return { sign: "Scorpio ♏", el: "Air" };
+                if((m==11&&d>=22)||(m==12&&d<=21)) return { sign: "Sagittarius ♐", el: "Api" };
+                return { sign: "Capricorn ♑", el: "Tanah" };
+            },
+
+            getShio(dateStr) {
+                const year = new Date(dateStr).getFullYear();
+                const shioAnimals = ["Monyet 🐒", "Ayam 🐓", "Anjing 🐕", "Babi 🐖", "Tikus 🐁", "Kerbau 🐃", "Macan 🐅", "Kelinci 🐇", "Naga 🐉", "Ular 🐍", "Kuda 🐎", "Kambing 🐐"];
+                return shioAnimals[year % 12] || "Shio Tidak Diketahui";
+            },
+
+            getColorAura(color) {
+                const auras = {
+                    "Merah": "Aura Api (Keberanian)", "Biru": "Aura Air (Ketenangan)",
+                    "Hijau": "Aura Daun (Pertumbuhan)", "Kuning": "Aura Cahaya (Kreativitas)",
+                    "Ungu": "Aura Kosmik (Ambisi & Misteri)", "Hitam": "Aura Void (Fokus Kuat)",
+                    "Putih": "Aura Suci (Kesempurnaan)"
+                };
+                return auras[color] || "Aura Misterius";
+            },
+
+            getBloodTrait(blood) {
+                if(!blood) return "";
+                const traits = {
+                    "A": "perfeksionis & terstruktur",
+                    "B": "bebas & imajinatif",
+                    "AB": "rasional & sulit ditebak",
+                    "O": "ambisius & jago bersosialisasi"
+                };
+                return traits[blood] || "";
+            },
+
+            generateRamalanSuhu(zodiac, shio, color, isPremium) {
+                const elemenZodiak = zodiac.el; // Api, Air, Tanah, Udara
+                let hubunganElemen = "";
+                
+                // Logic Kontradiksi / Keselarasan Zodiak & Warna
+                if (elemenZodiak === "Api" && (color === "Biru" || color === "Putih")) {
+                    hubunganElemen = `menyeimbangkan elemen Api dari zodiak ${zodiac.sign} lo. Lo mungkin kelihatan tenang dan cool di luar, tapi aslinya punya ambisi yang meledak-ledak di dalem.`;
+                } else if (elemenZodiak === "Air" && (color === "Merah" || color === "Kuning")) {
+                    hubunganElemen = `ngebakar elemen Air dari zodiak ${zodiac.sign} lo. Lo itu aslinya perasa dan empatik, tapi aura ini ngasih lo keberanian buat ngambil risiko yang ga ditebak orang.`;
+                } else if (elemenZodiak === "Tanah" && (color === "Ungu" || color === "Hitam")) {
+                    hubunganElemen = `ngasih sentuhan misterius di elemen Tanah zodiak ${zodiac.sign} lo. Lo yang biasanya realistis dan praktis, tiba-tiba punya insting dan firasat tajam yang jarang meleset.`;
+                } else if (elemenZodiak === "Udara" && (color === "Hijau" || color === "Hitam")) {
+                    hubunganElemen = `ngasih akar yang kuat buat elemen Udara zodiak ${zodiac.sign} lo. Pemikiran lo yang biasanya melayang ke mana-mana jadi lebih fokus dan gampang diwujudin jadi nyata.`;
+                } else {
+                    hubunganElemen = `beresonansi kuat dengan elemen ${elemenZodiak} bawaan zodiak ${zodiac.sign} lo. Ini nyiptain pancaran karisma yang bikin orang gampang segan dan percaya sama omongan lo.`;
+                }
+
+                let ramalan = `Suhu melihat energi warna ${color} yang sangat pekat mengelilingi aura lo, hal ini ${hubunganElemen} Garis takdir tahun ${shio} yang lo bawa juga ngasih pondasi hoki tersendiri.`;
+                
+                if (isPremium) {
+                    ramalan += `\n\nTahun ini, alam semesta lagi buka banyak pintu peluang buat lo, terutama dari circle sosial yang ga lo duga. Pesan Suhu: Percaya sama insting pertama lo pas ngambil keputusan krusial, radar kosmik lo lagi tajam-tajamnya!`;
+                } else {
+                    ramalan += ` (Upgrade ke Premium untuk baca terawangan hoki & mistis lebih dalam dari Suhu 🔮).`;
+                }
+
+                return ramalan;
+            },
+
+            process(user, answers, plan) {
+                // 1. MBTI Calculation
+                let scores = { E:0, I:0, S:0, N:0, T:0, F:0, J:0, P:0 };
+                answers.forEach(a => scores[a.value]++);
+                const mbti = [
+                    (scores.E >= scores.I) ? 'E' : 'I',
+                    (scores.S >= scores.N) ? 'S' : 'N',
+                    (scores.T >= scores.F) ? 'T' : 'F',
+                    (scores.J >= scores.P) ? 'J' : 'P'
+                ].join('');
+
+                const isPremium = plan === 'premium';
+
+                // 2. Cosmic Calculation (Zodiak, Shio, Aura, Blood)
+                const zodiacObj = this.getZodiac(user.dob);
+                const shioName = this.getShio(user.dob);
+                const auraName = this.getColorAura(user.color);
+                
+                const bloodTrait = isPremium ? this.getBloodTrait(user.blood) : null;
+
+                // 3. Vibe Mapping
+                const vibeMap = {
+                    "INTJ": "The Mastermind", "INTP": "The Logician", "ENTJ": "The Commander", "ENTP": "The Debater",
+                    "INFJ": "The Visionary", "INFP": "The Mediator", "ENFJ": "The Protagonist", "ENFP": "The Campaigner",
+                    "ISTJ": "The Logistician", "ISFJ": "The Defender", "ESTJ": "The Executive", "ESFJ": "The Consul",
+                    "ISTP": "The Virtuoso", "ISFP": "The Adventurer", "ESTP": "The Entrepreneur", "ESFP": "The Entertainer"
+                };
+                let vibeName = vibeMap[mbti] || "The Explorer";
+
+                // Formatting Subtitle Aura Label
+                let auraLabel = `Sun: ${zodiacObj.sign} • Tahun ${shioName} • ${auraName}`;
+                if (isPremium) {
+                    auraLabel = `Sun: ${zodiacObj.sign} • Gol. Darah ${user.blood} • ${auraName}`;
+                }
+
+                // 4. Generate Ramalan Suhu & Insight Text (TERPISAH & KONTRADIKSI LOGIC)
+                const ramalanSuhuText = this.generateRamalanSuhu(zodiacObj, shioName, user.color, isPremium);
+
+                let insight = "";
+                if (isPremium) {
+                    const isJ = mbti.includes('J');
+                    const isP = mbti.includes('P');
+                    const blood = user.blood;
+                    let mbtiSifat = isJ ? "terstruktur, perencana, dan tegas" : "spontan, adaptif, dan fleksibel";
+                    let kontradiksi = "";
+
+                    // Logika Kontradiksi MBTI vs Golongan Darah
+                    if (isJ && (blood === 'B' || blood === 'AB')) {
+                        kontradiksi = `Uniknya, walaupun secara mental lo itu tipe ${mbti} yang ${mbtiSifat}, genetik darah tipe ${blood} lo ngasih insting kebebasan & kreativitas rahasia buat ngakalin aturan kalau lagi kepepet.`;
+                    } else if (isP && (blood === 'A')) {
+                        kontradiksi = `Uniknya, walaupun secara mental lo itu tipe ${mbti} yang ${mbtiSifat}, genetik darah tipe ${blood} lo sering bikin lo tiba-tiba berubah jadi super perfeksionis di hal-hal krusial yang beneran lo peduliin.`;
+                    } else {
+                        kontradiksi = `Karakter mental lo sebagai tipe ${mbti} yang ${mbtiSifat} ternyata sejalan banget sama genetik darah tipe ${blood} lo yang ${bloodTrait}. Ini bikin lo punya kepribadian yang solid dan susah disetir sama orang lain.`;
+                    }
+
+                    insight = `Lo itu perpaduan jalan pikiran dan biologi yang langka. ${kontradiksi} Di dunia profesional, dualitas sifat lo ini bakal jadi senjata utama buat nge-lead project atau mecahin masalah yang orang lain ga kepikiran.`;
+                } else {
+                    insight = `Secara psikologi dasar, lo adalah tipe ${mbti} sejati. Perpaduan sifat bawaan lo membuat lo butuh keseimbangan antara tanggung jawab kerja dan kebebasan personal.`;
+                }
+
+                // Return Built Profile Payload
+                return {
+                    name: user.name,
+                    vibe: vibeName,
+                    mbti: mbti,
+                    auraLabel: auraLabel,
+                    ramalanSuhu: ramalanSuhuText,
+                    insight: insight,
+                    majors: [
+                        { title: mbti.includes('T') ? "Ilmu Komputer" : "Psikologi", match: "98%" },
+                        { title: mbti.includes('J') ? "Manajemen Bisnis" : "Desain Komunikasi", match: "92%" },
+                        { title: mbti.includes('E') ? "Ilmu Komunikasi" : "Data Science", match: "88%" }
+                    ],
+                    careers: [
+                        { title: mbti.includes('N') ? "Product Manager" : "Operations Head", salary: "15-30jt/bln" },
+                        { title: mbti.includes('F') ? "UX Researcher" : "Financial Analyst", salary: "10-25jt/bln" },
+                        { title: mbti.includes('P') ? "Creative Director" : "Corporate Lawyer", salary: "12-40jt/bln" }
+                    ],
+                    scores: [
+                        { label: mbti.includes('E') ? "Enterprising" : "Investigative", val: 88 },
+                        { label: mbti.includes('S') ? "Realistic" : "Artistic", val: 75 },
+                        { label: "Social", val: 65 },
+                        { label: "Conventional", val: 50 },
+                    ]
+                };
+            }
+        };
+
+        /**
+         * 4. UI CONTROLLERS
+         */
+        window.addEventListener('DOMContentLoaded', () => {
+            AOS.init({ duration: 1000, once: true, easing: 'ease-out-quint' });
+            lucide.createIcons();
+            initNeuralParticles();
+
+            // Mobile Menu
+            document.getElementById('hamburger').addEventListener('click', () => {
+                document.getElementById('mobile-menu').classList.toggle('active');
+                document.getElementById('hamburger').classList.toggle('active');
+            });
+        });
+
+        function initNeuralParticles() {
+            const container = document.getElementById('neural-container');
+            for (let i = 0; i < 20; i++) {
+                let node = document.createElement('div');
+                node.className = 'node-flow';
+                node.style.left = Math.random() * 100 + 'vw';
+                node.style.animationDelay = Math.random() * 10 + 's';
+                container.appendChild(node);
+            }
+        }
+
+        // BUKA MODAL SETUP
+        window.openOnboarding = function(planType) {
+            AppState.plan = planType;
+            const modal = document.getElementById('onboarding-modal');
+            const badge = document.getElementById('plan-badge');
+            const premiumFields = document.getElementById('premium-fields');
+            const desc = document.getElementById('onboarding-desc');
+            
+            if(planType === 'premium') {
+                badge.className = "inline-flex mb-6 px-3 py-1 rounded-md text-[10px] uppercase tracking-widest font-bold bg-gradient-to-r from-orange-500 to-purple-500 text-white";
+                badge.innerText = "⭐ PAKET PREMIUM (48 SOAL + DEEP DATA)";
+                desc.innerText = "Sistem premium butuh data spesifik lo buat ngebuka kunci perhitungan Genetika Karir.";
+                premiumFields.classList.remove('hidden');
+            } else {
+                badge.className = "inline-flex mb-6 px-3 py-1 rounded-md text-[10px] uppercase tracking-widest font-bold bg-white/10 text-white/50 border border-white/20";
+                badge.innerText = "✓ PAKET STANDAR (8 SOAL)";
+                desc.innerText = "Sistem standar butuh data dasar lo buat mulai sinkronisasi cosmic engine.";
+                premiumFields.classList.add('hidden');
+            }
+
+            // Close mobile menu if open
+            document.getElementById('mobile-menu').classList.remove('active');
+            document.getElementById('hamburger').classList.remove('active');
+            document.body.style.overflow = 'hidden';
+            
+            modal.classList.add('active');
+        }
+
+        window.closeOnboarding = function() {
+            document.getElementById('onboarding-modal').classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+
+        // MULAI KUIS
+        window.startAssessment = function() {
+            const name = document.getElementById('inp-name').value;
+            const dob = document.getElementById('inp-dob').value;
+            const color = document.getElementById('inp-color').value;
+            const blood = document.getElementById('inp-blood').value;
+
+            // Validasi Umum
+            if(!name || !dob || !color) {
+                document.getElementById('onboard-error').classList.remove('hidden');
+                document.getElementById('onboard-error').innerText = "Nama dan Tanggal Lahir wajib diisi Bro/Sis!";
+                return;
+            }
+
+            document.getElementById('onboard-error').classList.add('hidden');
+
+            AppState.user = { name, dob, color, blood };
+            AppState.questions = AppState.plan === 'premium' ? fullQuestionsDB : fullQuestionsDB.slice(0, 8);
+            AppState.currentStep = 0;
+            AppState.answers = [];
+
+            closeOnboarding();
+            document.getElementById('assessment-overlay').classList.add('active');
+            document.body.style.overflow = 'hidden';
+            
+            // Set loading text dynamically based on plan
+            if(AppState.plan === 'premium') {
+                document.getElementById('loading-desc').innerText = "Mengkalkulasi irisan pola MBTI, Zodiak, Shio, Genetika, dan Aura Warna lo.";
+            } else {
+                document.getElementById('loading-desc').innerText = "Mengkalkulasi irisan pola MBTI, Zodiak dasar, Shio, dan Aura Warna lo.";
+            }
+
+            renderQuestion(0);
+        }
+
+        function renderQuestion(index) {
+            if (index >= AppState.questions.length) {
+                showAIProcessing();
+                return;
+            }
+
+            const q = AppState.questions[index];
+            const progress = ((index) / AppState.questions.length) * 100;
+            
+            document.getElementById('progress-bar-fill').style.width = `${progress}%`;
+            document.getElementById('progress-text').innerText = `Step ${index + 1}/${AppState.questions.length}`;
+            document.getElementById('q-module').innerText = q.module;
+            document.getElementById('current-question-text').innerText = q.text;
+
+            const grid = document.getElementById('options-grid');
+            grid.innerHTML = '';
+
+            q.options.forEach(opt => {
+                let btn = document.createElement('button');
+                btn.className = "w-full p-5 rounded-2xl bg-white/5 border border-white/10 hover:border-orange-500/50 hover:bg-orange-500/10 text-left text-sm font-medium transition-all flex justify-between items-center group shadow-sm";
+                btn.innerHTML = `
+                    <span>${opt.text}</span>
+                    <div class="w-8 h-8 rounded-full bg-white/5 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all -translate-x-4 group-hover:translate-x-0">
+                        <i data-lucide="arrow-right" class="w-4 h-4 text-orange-400"></i>
+                    </div>
+                `;
+                btn.onclick = () => {
+                    btn.classList.add('bg-orange-500/20', 'border-orange-500');
+                    setTimeout(() => {
+                        AppState.answers.push({ id: q.id, value: opt.value });
+                        AppState.currentStep++;
+                        renderQuestion(AppState.currentStep);
+                    }, 200);
+                };
+                grid.appendChild(btn);
+            });
+            lucide.createIcons();
+        }
+
+        function showAIProcessing() {
+            document.getElementById('progress-bar-fill').style.width = `100%`;
+            document.getElementById('question-card').classList.add('hidden');
+            document.getElementById('ai-processing-view').classList.remove('hidden');
+
+            setTimeout(() => {
+                // Calculate Result via SSOT Engine
+                AppState.result = BackendEngine.process(AppState.user, AppState.answers, AppState.plan);
+                document.getElementById('assessment-overlay').classList.remove('active');
+                renderResultsView();
+            }, 3000); // 3 seconds to feel more "process heavy"
+        }
+
+        function renderResultsView() {
+            const data = AppState.result;
+            const isStandard = AppState.plan === 'standard';
+
+            document.getElementById('res-name').innerText = data.name;
+            document.getElementById('res-aura').innerText = data.auraLabel;
+            document.getElementById('res-vibe').innerText = `${data.mbti} — ${data.vibe}`;
+            
+            // Render Ramalan & Insight
+            document.getElementById('res-ramalan').innerText = `"${data.ramalanSuhu}"`;
+            document.getElementById('res-insight').innerText = data.insight;
+
+            document.getElementById('major-grid').innerHTML = data.majors.map(m => `
+                <div class="glass-card p-6 rounded-2xl flex flex-col justify-between border-white/10">
+                    <h4 class="font-bold text-white mb-4 text-lg">${m.title}</h4>
+                    <p class="text-orange-400 text-xs font-mono bg-orange-500/10 self-start px-3 py-1.5 rounded-md border border-orange-500/20">${m.match} Match</p>
+                </div>
+            `).join('');
+
+            const carContainer = document.getElementById('career-container');
+            const sklContainer = document.getElementById('skill-container');
+
+            if (isStandard) {
+                // LOCK PREMIUM FEATURES
+                const lockOverlay = `
+                    <div class="premium-locked-overlay rounded-[2.5rem]">
+                        <i data-lucide="lock" class="text-orange-400 w-8 h-8 mb-3"></i>
+                        <h4 class="font-bold text-white mb-1">Fitur Premium</h4>
+                        <p class="text-xs text-white/50 mb-4 px-6 text-center">Informasi profesi, proyeksi gaji, dan skala potensi dikunci pada Paket Standar.</p>
+                        <button onclick="promptPremiumUpgrade()" class="bg-gradient-to-r from-orange-500 to-purple-600 text-white text-xs font-bold px-6 py-2 rounded-full uppercase tracking-widest hover:scale-105 transition-transform">Upgrade Rp 15k</button>
+                    </div>
+                `;
+                
+                carContainer.classList.add('premium-locked');
+                carContainer.innerHTML += lockOverlay;
+                
+                sklContainer.classList.add('premium-locked');
+                sklContainer.innerHTML += lockOverlay;
+
+                document.getElementById('btn-download').innerText = "🔒 Download PDF (Premium Only)";
+                document.getElementById('btn-download').style.opacity = '0.5';
+                document.getElementById('btn-download').onclick = promptPremiumUpgrade;
+                document.getElementById('txt-download-info').innerText = "Halaman ini hanya merangkum sebagian kecil dari profil aslimu.";
+
+            } else {
+                // SHOW PREMIUM FEATURES
+                carContainer.classList.remove('premium-locked');
+                sklContainer.classList.remove('premium-locked');
+                
+                document.getElementById('career-list').innerHTML = data.careers.map(c => `
+                    <div class="p-4 rounded-xl flex justify-between items-center bg-white/5 border border-white/5 hover:border-orange-500/30 transition-colors">
+                        <span class="font-bold text-white/90 text-sm">${c.title}</span>
+                        <span class="text-xs font-mono text-green-400 font-bold bg-green-500/10 px-2 py-1 rounded">${c.salary}</span>
+                    </div>
+                `).join('');
+
+                document.getElementById('skill-bars').innerHTML = data.scores.map(s => `
+                    <div class="mb-4">
+                        <div class="flex justify-between text-xs font-bold text-white/50 mb-2 uppercase tracking-widest">
+                            <span>${s.label}</span>
+                            <span class="text-orange-400">${s.val}%</span>
+                        </div>
+                        <div class="w-full h-2 bg-white/5 rounded-full overflow-hidden">
+                            <div class="h-full bg-gradient-to-r from-orange-500 to-purple-500 rounded-full" style="width: ${s.val}%"></div>
+                        </div>
+                    </div>
+                `).join('');
+
+                document.getElementById('btn-download').innerText = "📄 Download Full Report (PDF)";
+                document.getElementById('btn-download').onclick = () => alert("PDF Sedang Digenerate... (Sistem Premium Terbuka!)");
+                document.getElementById('txt-download-info').innerText = "Report lengkap dengan ramalan cosmic, psikogram RIASEC dan Big5.";
+            }
+
+            document.getElementById('results-view').classList.add('active');
+            window.scrollTo(0, 0);
+            lucide.createIcons();
+            
+            // Trigger AOS animations on new elements
+            setTimeout(() => {
+                AOS.refresh();
+            }, 100);
+        }
+
+        // SIMULASI PAYMENT GATEWAY / KODE AKSES
+        window.promptPremiumUpgrade = function() {
+            // Ini adalah alur di mana kamu bisa mengarahkan user ke Trakteer atau WA
+            const confirmMsg = "Untuk membuka fitur Premium, lo cukup bayar Rp 15.000 via QRIS (Trakteer/WA).\n\nSetelah bayar, lo bakal dapet Kode Akses rahasia.\n\nPunya kodenya? Masukin di bawah ini:\n(Hint buat ngetes: ketik 'LUNAS')";
+            
+            const kode = prompt(confirmMsg);
+            
+            if (kode && kode.toUpperCase() === 'LUNAS') {
+                alert("✅ Kode Valid! Selamat datang di Era Baru. Membuka fitur Premium...");
+                
+                // Ubah status jadi premium
+                AppState.plan = 'premium';
+                
+                // Pura-puranya butuh gol darah karena di standar ga ngisi
+                if(!AppState.user.blood) {
+                    AppState.user.blood = 'O'; // default fallback for the demo if upgraded mid-way
+                }
+                
+                // Hide result view and show loading to re-process with deep data
+                document.getElementById('results-view').classList.remove('active');
+                
+                // Tambahkan sisa pertanyaan (dari index 8 sampai akhir)
+                AppState.questions = fullQuestionsDB;
+                
+                // Tanya sisa pertanyaan (mulai dari pertanyaan 9)
+                alert("Karena lo udah Premium, ada tambahan pertanyaan akurasi tinggi buat analisa Genetika Karir lo!");
+                document.getElementById('assessment-overlay').classList.add('active');
+                document.getElementById('loading-desc').innerText = "Mengkalkulasi irisan pola MBTI, Zodiak, Shio, Genetika, dan Aura Warna lo.";
+                renderQuestion(8); 
+                
+            } else if (kode) {
+                alert("❌ Kode salah bro/sis. Cek lagi atau chat admin ya!");
+            }
+        }
+    </script>
+</body>
+</html>
